@@ -8,4 +8,6 @@ public interface CpfService {
     CpfDTO saveCpf(CpfDTO cpf);
 
     StatusCpfDTO findStatusCpf(String cpf);
+
+    StatusCpfDTO updateStatus(StatusCpfDTO status);
 }

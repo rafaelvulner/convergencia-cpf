@@ -152,6 +152,45 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Alterar Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJUlMiLCJzdWIiOiIxIiwiaWF0IjoxNjY1MDAwMjAzLCJleHAiOjE2NjUwODY2MDN9.M1ss7TKDEZbMY4yVncLRZENKKGexPFFxvkG-4qUcEMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cpf\":\"97686832872\",\r\n    \"status\":\"DESATIVO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/cpf/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"cpf",
+						"status"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

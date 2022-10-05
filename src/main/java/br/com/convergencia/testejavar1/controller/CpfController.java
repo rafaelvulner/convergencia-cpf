@@ -18,12 +18,17 @@ public class CpfController {
     }
 
     @PostMapping
-    public ResponseEntity<CpfDTO> saveCpf(@RequestBody CpfDTO cpf){
+    public ResponseEntity<CpfDTO> saveCpf(@RequestBody CpfDTO cpf) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.cpfService.saveCpf(cpf));
     }
 
     @GetMapping("/{cpf}")
-    public ResponseEntity<StatusCpfDTO> findStatusCpf(@PathVariable("cpf") String cpf){
+    public ResponseEntity<StatusCpfDTO> findStatusCpf(@PathVariable("cpf") String cpf) {
         return ResponseEntity.ok(this.cpfService.findStatusCpf(cpf));
+    }
+
+    @PutMapping("/status")
+    public ResponseEntity<StatusCpfDTO> updateStatus(@RequestBody StatusCpfDTO status) {
+        return ResponseEntity.ok(this.cpfService.updateStatus(status));
     }
 }

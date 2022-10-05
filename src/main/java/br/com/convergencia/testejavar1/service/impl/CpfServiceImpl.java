@@ -36,12 +36,32 @@ public class CpfServiceImpl implements CpfService {
     @Override
     public StatusCpfDTO findStatusCpf(String cpf) {
 
+        Optional<Cpf> byCpf = getCpf(cpf);
+
+        return new StatusCpfDTO(cpf, byCpf.get().getStatus());
+    }
+
+    @Override
+    public StatusCpfDTO updateStatus(StatusCpfDTO statuss) {
+
+        Cpf status = getCpf(statuss.getCpf()).get();
+
+        status.setStatus(statuss.getStatus());
+
+        this.cpfRepository.save(status);
+
+        return StatusCpfDTO.builder()
+                .cpf(status.getCpf())
+                .status(status.getStatus())
+                .build();
+    }
+
+    private Optional<Cpf> getCpf(String cpf) {
         Optional<Cpf> byCpf = this.cpfRepository.findByCpf(cpf);
 
         if (byCpf.isEmpty() || !CpfValidator.isValid(cpf))
             throw new InvalidCpfException("CPF inválido!");
-
-        return new StatusCpfDTO(cpf, byCpf.get().getStatus());
+        return byCpf;
     }
 
     private void consultCPF(String cpf) {
